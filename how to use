@@ -1,0 +1,27 @@
+step1:
+引入jquery和插件
+<script type="text/javascript" src="path/to/jquery.js"></script>
+<script type="text/javascript" src="path/to/jcarousellite.js"></script>
+
+step2:
+html部分
+<button class="prev"><<</button>
+<button class="next">>></button>
+        
+<div class="anyClass">
+    <ul>
+        <li><img src="someimage" alt="" width="100" height="100" ></li>
+        <li><img src="someimage" alt="" width="100" height="100" ></li>
+        <li><img src="someimage" alt="" width="100" height="100" ></li>
+        <li><img src="someimage" alt="" width="100" height="100" ></li>
+    </ul>
+</div>
+
+step3:
+$(function() {
+    $(".anyClass").jCarouselLite({
+        btnNext: ".next",
+        btnPrev: ".prev"
+        //可更改和添加其它默认选项
+    });
+});
