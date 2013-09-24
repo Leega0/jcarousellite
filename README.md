@@ -1,4 +1,151 @@
 jcarousellite
 =============
 
-图片轮播插件，手动or自动
+* 使用步骤，第一步创建html文本标记
+ *
+ *  <div class="carousel">
+ *      <ul>
+ *          <li><img src="image/1.jpg" alt="1"></li>
+ *          <li><img src="image/2.jpg" alt="2"></li>
+ *          <li><img src="image/3.jpg" alt="3"></li>
+ *      </ul>
+ *  </div>
+ *
+ * 正如你可以看到，这个片段是只不过是一个简单的div包含图像的无序列表。
+ * 不需要任何特殊的“类”的属性，或一个特殊的“ CSS”文件
+ * 使用的类只是一个属性的解释
+ *
+ * 可根据需要添加导航按钮。
+ * 例如你可以添加上一个，下一个按钮来控制图片滚动的方向
+ * 如下：你只需要添加类名即可
+ *
+ * <button class="prev">&lt;&lt;</button>
+ * <button class="next">&gt;&gt;</button>
+ *
+ * 现在，所有你需要做的是配合div元素调用插件，并配置它
+ * 如下：
+ *
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev"
+ * });
+ *
+ * 这里有一些其他的选项可以按照你自己的需求去配置。
+ * 每一个都有解释
+ *
+ * @option btnPrev, btnNext : string - no defaults
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev"
+ * });
+ * @desc 使用btnPrev、btnNext控制前进和后退
+ *
+ * @option btnGo - array - no defaults
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      btnGo: [".0", ".1", ".2"]
+ * });
+ * @desc 如果图片过多，也可以使用编号跳转图片功能，会自动到达所点编号的图片上
+ *
+ * @option mouseWheel : boolean - default is false
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      mouseWheel: true
+ * });
+ * @desc 鼠标滚动轮控制图片前进后退，要先去下载mousewheel插件，然后开启true
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      mouseWheel: true
+ * });
+ *
+ * @option auto : 数字 默认是空，不会自动滚动
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      auto: 800,
+ *      speed: 500
+ * });
+ * @desc You can make your carousel auto-navigate itself by specfying a millisecond value in this option.
+ * The value you specify is the amount of time between 2 slides. The default is null, and that disables auto scrolling.
+ * Specify this value and magically your carousel will start auto scrolling.
+ *
+ * @option speed : number - 200 is default
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      speed: 800
+ * });
+ * @desc Specifying a speed will slow-down or speed-up the sliding speed of your carousel. Try it out with
+ * different speeds like 800, 600, 1500 etc. Providing 0, will remove the slide effect.
+ *
+ * @option easing : string - no easing effects by default.
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      easing: "bounceout"
+ * });
+ * @desc 晃动效果，需要引入easing插件开启功能
+ *
+ * @option vertical : boolean - default is false
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      vertical: true
+ * });
+ * @desc 默认是水平滚动的，如需修改成垂直滚动，开启此选项
+ *
+ * @option circular : boolean - default is true
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      circular: false
+ * });
+ * @desc 是否循环
+ *
+ * @option visible : number - default is 3
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      visible: 4
+ * });
+ * @desc 几个可见的图片
+ * @option start : number - default is 0
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      start: 2
+ * });
+ * @desc 第几个图片开始滚动，默认从0开始
+ *
+ * @option scrool : number - default is 1
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      scroll: 2
+ * });
+ * @desc 每次滚动几个图片，默认为1
+ *
+ * @option beforeStart, afterEnd : function - callbacks
+ * @example
+ * $(".carousel").jCarouselLite({
+ *      btnNext: ".next",
+ *      btnPrev: ".prev",
+ *      beforeStart: function(a) {
+ *          alert("Before animation starts:" + a);
+ *      },
+ *      afterEnd: function(a) {
+ *          alert("After animation ends:" + a);
+ *      }
+ * });
+ * @desc 回调函数
